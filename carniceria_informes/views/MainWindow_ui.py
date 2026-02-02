@@ -38,18 +38,18 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.lblTitulo)
 
-        self.tableFruta = QTableWidget(self.layoutWidget)
-        if (self.tableFruta.columnCount() < 3):
-            self.tableFruta.setColumnCount(3)
+        self.tableCarne = QTableWidget(self.layoutWidget)
+        if (self.tableCarne.columnCount() < 3):
+            self.tableCarne.setColumnCount(3)
         __qtablewidgetitem = QTableWidgetItem()
-        self.tableFruta.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        self.tableCarne.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
-        self.tableFruta.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        self.tableCarne.setHorizontalHeaderItem(1, __qtablewidgetitem1)
         __qtablewidgetitem2 = QTableWidgetItem()
-        self.tableFruta.setHorizontalHeaderItem(2, __qtablewidgetitem2)
-        self.tableFruta.setObjectName(u"tableFruta")
+        self.tableCarne.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        self.tableCarne.setObjectName(u"tableCarne")
 
-        self.verticalLayout.addWidget(self.tableFruta)
+        self.verticalLayout.addWidget(self.tableCarne)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -87,12 +87,12 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.lblTitulo.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:700;\">GESTION DE FRUTERIA</span></p></body></html>", None))
-        ___qtablewidgetitem = self.tableFruta.horizontalHeaderItem(0)
+        self.lblTitulo.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:700;\">GESTION DE CARNICERIA</span></p></body></html>", None))
+        ___qtablewidgetitem = self.tableCarne.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Nueva columna", None));
-        ___qtablewidgetitem1 = self.tableFruta.horizontalHeaderItem(1)
+        ___qtablewidgetitem1 = self.tableCarne.horizontalHeaderItem(1)
         ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Nombre", None));
-        ___qtablewidgetitem2 = self.tableFruta.horizontalHeaderItem(2)
+        ___qtablewidgetitem2 = self.tableCarne.horizontalHeaderItem(2)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Peso (KG)", None));
         self.btnRefrescar.setText(QCoreApplication.translate("MainWindow", u"Refrescar", None))
         self.btnPDF.setText(QCoreApplication.translate("MainWindow", u"Exportar PDF", None))

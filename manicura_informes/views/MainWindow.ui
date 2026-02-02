@@ -27,25 +27,25 @@
      <item>
       <widget class="QLabel" name="lblTitulo">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700;&quot;&gt;GESTION DE FRUTERIA&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700;&quot;&gt;GESTION DE MANICURA&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QTableWidget" name="tableFruta">
+      <widget class="QTableWidget" name="tableNails">
        <column>
         <property name="text">
-         <string>Nueva columna</string>
+         <string>Servicio</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>Nombre</string>
+         <string>Descripcion</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>Peso (KG)</string>
+         <string>Precio</string>
         </property>
        </column>
       </widget>
