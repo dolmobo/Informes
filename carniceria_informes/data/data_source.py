@@ -32,7 +32,8 @@ class DataSource:
                 datos = [
                     ("Pollo", "Blanca", 23),
                     ("Cerdo", "Roja", 43),
-                    ("Ternera", "Roja", 45)
+                    ("Ternera", "Roja", 45),
+                    ("Res", "Roja", 54)
                 ]
 
                 cur.executemany("INSERT INTO carniceria VALUES (?,?,?)", datos)
