@@ -3,7 +3,7 @@ import sqlite3
 
 class DataSource:
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    db_path = os.path.join(base_dir, "control_horario.db") # Cambiamos nombre BD
+    db_path = os.path.join(base_dir, "control_horario.db") 
 
     def get_connection():
         conn = sqlite3.connect(DataSource.db_path)

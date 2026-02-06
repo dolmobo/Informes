@@ -16,20 +16,18 @@ class ReportService:
         try:
             canvas.drawImage("logo.png", doc.leftMargin, height - 3 * cm, width=2.5*cm, height=2.5*cm, mask='auto')
         except:
-            pass # Si no hay logo, no hacemos nada
+            pass
 
         canvas.setFont("Helvetica-Bold", 12)
         canvas.drawString(doc.leftMargin + 3 * cm, height - 2 * cm, "INFORME DE HORAS EXTRA")
 
         canvas.setFont("Helvetica", 10)
         canvas.drawString(doc.leftMargin + 3 * cm, height - 2.6 * cm, "Autor: Dept. RRHH")
+
         canvas.drawRightString(width - doc.rightMargin, height - 2.6 * cm, f"Fecha: {fecha}")
 
-        # Línea separadora encabezado
         canvas.line(doc.leftMargin, height - 3.2 * cm, width - doc.rightMargin, height - 3.2 * cm)
 
-        # --- PIE DE PÁGINA ---
-        # Línea separadora pie
         canvas.line(doc.leftMargin, 2.5 * cm, width - doc.rightMargin, 2.5 * cm)
         
         canvas.setFont("Helvetica", 8)
@@ -42,14 +40,7 @@ class ReportService:
         datos = DataSource.obtener_informe_horas()
 
         # Configuración del PDF con márgenes para dejar sitio al encabezado
-        doc = SimpleDocTemplate(
-            file_path,
-            pagesize=A4,
-            topMargin=3.5*cm,    # Margen superior amplio para el logo
-            bottomMargin=3*cm,   # Margen inferior amplio para el pie
-            leftMargin=2*cm,
-            rightMargin=2*cm
-        )
+        doc = SimpleDocTemplate(file_path, pagesize=A4,)
 
         styles = getSampleStyleSheet()
         elementos = []
@@ -70,13 +61,12 @@ class ReportService:
             ("BACKGROUND", (0,0), (-1,0), colors.lightgrey),
             ("FONTNAME", (0,0), (-1,0), "Helvetica-Bold"),
             ("GRID", (0,0), (-1,-1), 0.5, colors.grey),
-            ("ALIGN", (2,1), (-1,-1), "CENTER"), # Centrar columnas numéricas
-            ("ALIGN", (0,0), (-1,-1), "CENTER"), # Centrar todo un poco más
+            ("ALIGN", (2,1), (-1,-1), "CENTER"), 
+            ("ALIGN", (0,0), (-1,-1), "CENTER"), 
         ]))
 
         elementos.append(tabla)
 
-        # GENERAR PDF usando la función de encabezado
         doc.build(
             elementos, 
             onFirstPage=ReportService.encabezado_y_pie, 
