@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QMainWindow, QMessageBox, QTableWidgetItem, QFileDialog
-from views.MainWindow_ui import Ui_MainWindow
 from data.data_source import DataSource
+from views.MainWindow_ui import Ui_MainWindow
 from service.report_generator import ReportService
 
 class MainController(QMainWindow, Ui_MainWindow):
@@ -9,32 +9,25 @@ class MainController(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
 
         DataSource.ensure_db()
-
         self.cargar_tabla()
 
-        self.btnRefrescar.clicked.connect(self.cargar_tabla)
         self.btnPDF.clicked.connect(self.generar_informe)
 
     def generar_informe(self):
         try:
-            file_path, _ = QFileDialog().getSaveFileName(self, "Guardando Informe Empleados...", "empleadosCAMBIADO.pdf", "PDF Files (*.pdf)")
+            file_path, _ = QFileDialog().getSaveFileName(self, "Guardando Informe Empleados...", "empleados.pdf", "PDF Files (*.pdf)")
             if file_path:
                 ReportService.informe_empleados(file_path)
-                QMessageBox.information(self, "EXITO", "PDF generado con exito")
-
+                QMessageBox.information(self, "EXITO", "El pdf se ha generado con exito.")
         except Exception as e:
-            QMessageBox.critical(self, "ERROR", f"No se pudo generar el pdf: {e}")
-    
+            QMessageBox.critical(self, "ERROR", f"No se ha podido genenar el PDF: {e}")
+
     def cargar_tabla(self):
         try:
-            rows = DataSource.obtener_informacion()
-            total, suma_horas = DataSource.suma_horas(rows)
+            datos = DataSource.obtener_informacion()
+            self.tableEmpleados.setRowCount(len(datos))
 
-            self.tableEmpleados.setRowCount(len(rows))
-
-            self.lblEstado.setText(f"Total de registros: {total} | Horas totales: {suma_horas}")
-
-            for indice, datos in enumerate(rows):
+            for indice, datos in enumerate(datos):
                 self.tableEmpleados.setItem(indice,0, QTableWidgetItem(str(datos["nombre"])))
                 self.tableEmpleados.setItem(indice,1, QTableWidgetItem(str(datos["departamento"])))
                 self.tableEmpleados.setItem(indice,2, QTableWidgetItem(str(datos["total"])))
